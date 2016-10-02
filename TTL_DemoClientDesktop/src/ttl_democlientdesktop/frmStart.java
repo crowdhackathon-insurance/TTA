@@ -25,6 +25,7 @@ public class frmStart extends javax.swing.JFrame {
         bHide = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Simulator");
         setMaximumSize(new java.awt.Dimension(352, 386));
         setMinimumSize(new java.awt.Dimension(352, 386));
 

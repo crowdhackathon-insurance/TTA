@@ -15,6 +15,7 @@ public class frmHelp extends javax.swing.JFrame {
         bBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Medical volunteer");
         setMaximumSize(new java.awt.Dimension(352, 386));
         setMinimumSize(new java.awt.Dimension(352, 386));
         setPreferredSize(new java.awt.Dimension(352, 386));

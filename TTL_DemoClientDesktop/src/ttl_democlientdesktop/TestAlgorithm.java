@@ -19,8 +19,8 @@ public class TestAlgorithm {
             Globals.init();
             Globals.glStartForm = new frmStart(false) ;
             File f = new File(Globals.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-            //File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataAccident.txt");
-            File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataNormal.txt");
+            File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataAccident.txt");
+            //File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataNormal.txt");
             
             in = new BufferedReader(new FileReader(runFolder));
             

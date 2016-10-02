@@ -19,6 +19,7 @@ public class frmQuestion extends javax.swing.JFrame {
         pbProgress = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Popup Question");
         setMaximumSize(new java.awt.Dimension(352, 386));
         setMinimumSize(new java.awt.Dimension(352, 386));
         setPreferredSize(new java.awt.Dimension(352, 386));

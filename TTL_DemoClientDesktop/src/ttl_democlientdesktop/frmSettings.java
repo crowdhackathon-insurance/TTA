@@ -34,6 +34,7 @@ public class frmSettings extends javax.swing.JFrame {
         bSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Settings");
         setMaximumSize(new java.awt.Dimension(352, 386));
         setMinimumSize(new java.awt.Dimension(352, 386));
         setPreferredSize(new java.awt.Dimension(352, 386));

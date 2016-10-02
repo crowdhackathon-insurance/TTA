@@ -13,6 +13,7 @@ public class frmView extends javax.swing.JFrame {
         tpMain = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Server");
 
         tpMain.setName("Server"); // NOI18N
 
