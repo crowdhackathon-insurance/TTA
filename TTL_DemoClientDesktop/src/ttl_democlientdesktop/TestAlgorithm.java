@@ -11,21 +11,37 @@ import java.util.logging.Logger;
 
 
 public class TestAlgorithm {
+    public static float pagkosmiaStatheraEpitaxinsisSigrousis = (float)18.387 ;
+    
     public static void main(String args[]) {
         BufferedReader in;
         try {
+            Globals.init();
+            Globals.glStartForm = new frmStart(false) ;
             File f = new File(Globals.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
-            File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataAccident.txt");
-            //System.out.println(runFolder);
+            //File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataAccident.txt");
+            File runFolder = new File(f.getAbsolutePath()+"/ttl_other/dummyDataNormal.txt");
+            
             in = new BufferedReader(new FileReader(runFolder));
-            //in = new BufferedReader(new FileReader("ttl_other/dummyDataNormal.txt"));
+            
             Measurements meas = new Measurements();
             String line;
+            
             while((line = in.readLine()) != null)
             {
-                System.out.println(line);
                 meas.updateValuesFromTextFile(line);
                 meas.debugPrintValues();
+                
+                if(((meas.getX()>pagkosmiaStatheraEpitaxinsisSigrousis) ||
+                        (meas.getY()>pagkosmiaStatheraEpitaxinsisSigrousis) ||
+                        (meas.getZ()>pagkosmiaStatheraEpitaxinsisSigrousis) &&
+                        (meas.getLat()==meas.getLastLat()) &&
+                        (meas.getLastLon()==meas.getLastLon())))
+                {
+                    Globals.glQuestionForm.setVisible(true);
+                    Globals.glQuestionForm.enableProgressBar();
+                    break ;
+                }
             }
             in.close();
         } catch (FileNotFoundException ex) {

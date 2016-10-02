@@ -8,11 +8,13 @@ public class GenerateDummyData {
     BufferedWriter writer = null;
     
     public static void main(String args[]) {
-        GenerateDummyData d = new GenerateDummyData() ;        
+        GenerateDummyData d = new GenerateDummyData() ;
         //d.prepareWriter("/home/michael/Desktop/dummyDataNormal.txt");
-        d.prepareWriter("/home/michael/Desktop/dummyDataAccident.txt");        
+        d.prepareWriter("/home/michael/Desktop/dummyDataAccident.txt");
         //d.kanonikoSenario();
         d.senarioAtyximatos() ;
+        
+        
     }
     private void kanonikoSenario()
     {
@@ -20,56 +22,56 @@ public class GenerateDummyData {
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.low, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<2400;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.averageminus, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<3000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.average, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<1000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.averageminus, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<2000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.low, false);
             write(meas);
-        }       
+        }
     }
-     private void senarioAtyximatos()
+    private void senarioAtyximatos()
     {
         for(int i=0;i<1000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.low, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<2400;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.averageminus, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<2000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.averageplus, false);
             write(meas);
-        }       
+        }
         for(int i=0;i<4000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.high, true);
             write(meas);
-        }       
+        }
         for(int i=0;i<2000;i++)
         {
             meas.updateWithGenerateValues(Measurements.dataProfile.low, true);
             write(meas);
-        }       
-    }  
+        }
+    }
     private void prepareWriter(String path)
     {
         
@@ -87,9 +89,9 @@ public class GenerateDummyData {
     }
     private void write(Measurements meas)
     {
-        System.out.print(meas.getX()+"|"+meas.getY()+"|"+meas.getZ()+"|"+meas.getLat()+"|"+meas.getLon()+"\n") ;
+        System.out.print("#"+meas.getX()+"#"+meas.getY()+"#"+meas.getZ()+"#"+meas.getLat()+"#"+meas.getLon()+"#\n") ;
         try {
-            writer.write(meas.getX()+"|"+meas.getY()+"|"+meas.getZ()+"|"+meas.getLat()+"|"+meas.getLon()+"\n");
+            writer.write("#"+meas.getX()+"#"+meas.getY()+"#"+meas.getZ()+"#"+meas.getLat()+"#"+meas.getLon()+"#\n");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

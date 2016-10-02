@@ -9,7 +9,6 @@ public class Measurements {
         ,average
         ,averageplus
         ,low
-        
     }
     private float accX,accY,accZ, lastX,lastY,lastZ;
     private double lon,lat, lastLon,lastLat ;
@@ -46,6 +45,14 @@ public class Measurements {
         return lon;
     }
     
+    public double getLastLat() {
+        return lastLat;
+    }
+    
+    public double getLastLon() {
+        return lastLon;
+    }
+    
     public void setX(float x) {
         this.accX = x;
     }
@@ -73,20 +80,18 @@ public class Measurements {
     
     public void updateValuesFromTextFile(String line)
     {
-        String[] array = line.split("|") ;
-        //debugPrintValues();
-        
-        System.out.println(array[1]);
-        accX = Float.parseFloat(array[1]) ;
-         System.out.println(array[2]);
-        accY = Float.parseFloat(array[2]) ;
-         System.out.println(line);
-        accZ = Float.parseFloat(array[3]) ;
-         System.out.println(line);
-        lat = Double.parseDouble(array[4]) ;
-         System.out.println(line);
-        lon = Double.parseDouble(array[5]) ;
-         System.out.println(line);
+        try {
+            String[] array = line.split("#") ;
+            accX = Float.parseFloat(array[1]) ;
+            accY = Float.parseFloat(array[2]) ;
+            accZ = Float.parseFloat(array[3]) ;
+            lat = Double.parseDouble(array[4]) ;
+            lon = Double.parseDouble(array[5]) ;
+        }
+        catch(Exception ex)
+        {
+            //Nothing
+        }
         
     }
     
@@ -136,9 +141,9 @@ public class Measurements {
                 setZ((float)(random.nextInt(2600)-1300)/100) ;
                 break ;
             case high:
-                setX((float)(random.nextInt(40000)-2000)/100) ;
-                setY((float)(random.nextInt(40000)-2000)/100) ;
-                setZ((float)(random.nextInt(40000)-2000)/100) ;
+                setX((float)(random.nextInt(4000)-2000)/100) ;
+                setY((float)(random.nextInt(4000)-2000)/100) ;
+                setZ((float)(random.nextInt(4000)-2000)/100) ;
                 break ;
         }
     }

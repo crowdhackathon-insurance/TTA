@@ -5,14 +5,15 @@ public class frmStart extends javax.swing.JFrame {
     public frmStart() {
         initComponents();
         Globals.glStartForm = this ;
-        Globals.glQuestionForm = new frmQuestion();
-        Globals.glSettingsForm = new frmSettings() ;
-        Globals.glAlarmForm = new frmAlarm() ;
-        Globals.glHelpForm = new frmHelp() ;
-        
-        Globals.ms = new ManageSocket();
-        if (Globals.ms.openSocketWithServer())
-            System.out.println("Ola kala!Egine syndesi me to Server");
+        Globals.init();
+    }
+    public frmStart(boolean debug) {
+        initComponents();
+        if (debug)
+        {
+            Globals.glStartForm = this ;
+            Globals.init();
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -35,7 +36,7 @@ public class frmStart extends javax.swing.JFrame {
             }
         });
 
-        bCrush.setText("Technical Crash");
+        bCrush.setText("Artificial Crash");
         bCrush.setToolTipText("");
         bCrush.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,7 +121,7 @@ public class frmStart extends javax.swing.JFrame {
             }
         });
     }
-            
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrush;
     private javax.swing.JButton bHide;

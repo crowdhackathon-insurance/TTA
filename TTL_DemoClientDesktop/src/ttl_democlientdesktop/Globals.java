@@ -22,6 +22,19 @@ public class Globals {
     static String address = "localhost";
     static ManageSocket ms ;
     
+    
+    static void init()
+    {
+        
+        Globals.glQuestionForm = new frmQuestion();
+        Globals.glSettingsForm = new frmSettings() ;
+        Globals.glAlarmForm = new frmAlarm() ;
+        Globals.glHelpForm = new frmHelp() ;
+        
+        Globals.ms = new ManageSocket();
+        if (Globals.ms.openSocketWithServer())
+            System.out.println("Ola kala!Egine syndesi me to Server");
+    }
     static String getSocketMessage()
     {
         String tmpMess = "#SOS" ;
