@@ -18,6 +18,7 @@ public class Globals {
     static frmHelp glHelpForm ;
     
     static java.util.Timer timer = new java.util.Timer(); ;
+    //static String address = "192.168.177.71";
     static String address = "localhost";
     static ManageSocket ms ;
     
