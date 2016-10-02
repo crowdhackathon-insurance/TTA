@@ -7,22 +7,18 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 public class ManageSocket {
     Socket echoSocket = null;
     PrintWriter out = null;
     BufferedReader in = null;
-    String address = "localhost";
+    
     
     public String sendMessage(String mess)
     {
         out.println(mess);
-        try {
-            String clientCommand = in.readLine();
-            System.out.println("Server answers: " + clientCommand);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        out.flush();
         return "" ;
     }
     
@@ -41,11 +37,12 @@ public class ManageSocket {
     public boolean openSocketWithServer()
     {
         try {
-            echoSocket = new Socket(address, 1234);
+            echoSocket = new Socket(Globals.address, 1234);
             out = new PrintWriter(echoSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(
                     echoSocket.getInputStream()));
-            
+            ListenThread cliThread = new ListenThread(in);
+            cliThread.start();
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Couldn't get I/O for "
@@ -69,6 +66,13 @@ public class ManageSocket {
                 while (running) {
                     String clientCommand = in.readLine();
                     System.out.println("" + clientCommand);
+                    if (clientCommand.equals("HELP"))
+                    {
+                        Globals.glHelpForm.setVisible(true);
+                        JFrame tmpFrame = Globals.getCurrentFrame() ;
+                        tmpFrame.setVisible(false);
+                        Globals.glHelpForm.setLocation(tmpFrame.getLocation());
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

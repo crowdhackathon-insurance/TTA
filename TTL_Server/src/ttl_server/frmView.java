@@ -14,15 +14,21 @@ public class frmView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tpMain.setName("Server"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tpMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 591, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpMain, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tpMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(385, Short.MAX_VALUE))
         );
 
         pack();
@@ -60,12 +66,13 @@ public class frmView extends javax.swing.JFrame {
             }
         });
     }
-    public void addSOSPanel(String encodedMessage,String tabName)
+    public pSOSReport addSOSPanel(String encodedMessage,String tabName)
     {
         pSOSReport sosPan = new pSOSReport() ;
         sosPan.fillLabels(encodedMessage,tabName);
         tpMain.add(sosPan);
         tpMain.setSelectedComponent(sosPan);
+        return sosPan ;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane tpMain;

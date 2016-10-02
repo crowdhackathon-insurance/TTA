@@ -23,17 +23,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpMain" alignment="0" pref="623" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="tpMain" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="591" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tpMain" alignment="0" pref="335" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="tpMain" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="385" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tpMain">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="Server" noResource="true"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>

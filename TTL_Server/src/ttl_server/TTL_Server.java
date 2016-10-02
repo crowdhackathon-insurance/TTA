@@ -31,7 +31,7 @@ class ClientServiceThread extends Thread {
     Socket clientSocket;
     int clientID = -1;
     boolean running = true;
-    
+    pSOSReport currentSosPan  ;
     public static ArrayList<PrintWriter> arAllClients = new ArrayList<>() ;
     
     ClientServiceThread(Socket s, int i) {
@@ -49,13 +49,25 @@ class ClientServiceThread extends Thread {
             while (running) {
                 String clientCommand = in.readLine();
                 System.out.println("Client"+ clientID +"("+clientSocket.getInetAddress().getHostName()+") Says :" + clientCommand);
-                TTL_Server.myViews.addSOSPanel(clientCommand,clientID +"("+clientSocket.getInetAddress().getHostName()+")") ;
+                
                 if (clientCommand.equalsIgnoreCase("quit")) {
                     running = false;
                     System.out.print("Stopping client thread for client : " + clientID);
-                } else {
-                    out.println("Ti exeis??");
-                    out.flush();
+                } else if (clientCommand.startsWith("#")) {
+                    currentSosPan = TTL_Server.myViews.addSOSPanel(clientCommand,clientID +"("+clientSocket.getInetAddress().getHostName()+")") ;
+                    for (PrintWriter pw : arAllClients)
+                    {
+                        if (out!=pw)
+                        {
+                            pw.println("HELP");
+                            pw.flush();
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    currentSosPan.updateView(clientCommand) ;
                 }
             }
         } catch (Exception e) {
